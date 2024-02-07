@@ -1,7 +1,6 @@
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
         HashMap<String,Integer> map=new HashMap<>();
-        int[] ans=new int[k];
         int max=0;
         for(String s:words){
             map.put(s, map.getOrDefault(s, 0) + 1);
