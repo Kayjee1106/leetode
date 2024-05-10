@@ -1,7 +1,6 @@
 class Solution {
     public int[] kthSmallestPrimeFraction(int[] arr, int k) {
       PriorityQueue<double[]> pq = new PriorityQueue<>((a, b) -> Double.compare(b[0], a[0]));
-
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 double div = (double) arr[i] / arr[j];
