@@ -19,20 +19,19 @@ class Solution {
         return minDays;
         }
     private int getNumberOfBouquets(int[] bloomDay,int mid,int k){
-        int b=0;
-        int c=0;
-        for(int i=0;i<bloomDay.length;i++){
-            if(bloomDay[i]<=mid){
-                c++;
+          int b = 0;
+          int c = 0;
+          for (int i = 0; i < bloomDay.length && c < k; i++) {
+            if (bloomDay[i] <= mid) {
+              c++;
+            } else {
+              c = 0;
             }
-            else{
-                c=0;
+            if (c == k) {
+              b++;
+              c = 0;
             }
-            if(c==k){
-                b++;
-                c=0;
-            }
-        }
-        return b;
+          }
+          return b;
     }
 }
