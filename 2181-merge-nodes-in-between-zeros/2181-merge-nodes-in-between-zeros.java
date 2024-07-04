@@ -9,32 +9,20 @@
  * }
  */
 class Solution {
-    public ListNode solve(int [] sum){
-        ListNode head= new ListNode(sum[0]);
-        ListNode curr=head;
-        for(int i=1;i<sum.length;i++){
-            ListNode newNode =new ListNode(sum[i]);
-            curr.next=newNode;
-            curr=curr.next;
-        }
-        return head;
-    }
     public ListNode mergeNodes(ListNode head) {
-        ListNode curr=head;
-        ArrayList<Integer> suml=new ArrayList<>();
-        int sum=0;
-        while(curr.next!=null){
-            if(curr.next.val>0){
-            sum+=curr.next.val;
-            curr=curr.next;
+        ListNode curr1=head.next;
+        ListNode curr2=curr1;
+        while(curr2!=null){
+            int sum=0;
+            while(curr2!=null && curr2.val!=0){
+                sum+=curr2.val;
+                curr2=curr2.next;
             }
-            else{
-                suml.add(sum);
-                sum=0;
-                curr=curr.next;
-            }
+            curr1.val = sum;
+            curr2=curr2.next;
+            curr1.next=curr2;
+            curr1=curr1.next;
         }
-        int[] newArray = suml.stream().mapToInt(i -> i).toArray();
-        return solve(newArray);
+        return head.next ;
     }
 }
