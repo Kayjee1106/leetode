@@ -7,9 +7,7 @@ class Solution {
                     st.pop();
                 }
             }
-            else if(logs[i].equals("./")){
-            }
-            else{
+             else if (!logs[i].equals("./")) {
                 st.push(logs[i]);
             }
         }
