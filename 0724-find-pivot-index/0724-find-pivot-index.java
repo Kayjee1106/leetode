@@ -1,19 +1,21 @@
 class Solution {
-    int sum(int i,int n,int[] arr){
-        int sum=0;
-        while(i<n){
-            sum+=arr[i];
-            i++;
-        }
-        return sum;
-    }
     public int pivotIndex(int[] nums) {
-        if(sum(1,nums.length,nums)==0){
-            return 0;
+        int n=nums.length;
+        int sf=0;
+        int sb=0;
+        int[] fwd=new int[n];
+        int[] bwd=new int[n];
+        for(int i=0;i<n;i++){
+            fwd[i]=sf+nums[i];
+            sf=fwd[i];
         }
-        for(int pivot=1;pivot<nums.length;pivot++){
-            if(sum(0,pivot,nums)==sum(pivot+1,nums.length,nums)){
-                return pivot;
+        for(int j=n-1;j>=0;j--){
+            bwd[j]=sb+nums[j];
+            sb=bwd[j];
+        }
+        for(int k=0;k<n;k++){
+            if(fwd[k]==bwd[k]){
+                return k;
             }
         }
         return -1;
