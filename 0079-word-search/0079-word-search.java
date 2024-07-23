@@ -1,38 +1,39 @@
-class Solution {
-    int m,n,l;
-    int[][] directions = {{0,1},{0,-1},{1,0},{-1,0}};
+public class Solution {
     public boolean exist(char[][] board, String word) {
-         m=board.length;
-         n=board[0].length;
-         l=word.length();
-        if(m*n<1){
+        if (board == null || board.length == 0 || board[0].length == 0) {
             return false;
         }
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(board[i][j] == word.charAt(0) && find(board, i, j, word, 0)) {
-                return true;
-            }
+        
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (backtrack(board, word, i, j, 0, visited)) {
+                    return true;
+                }
             }
         }
+        
         return false;
     }
-    public boolean find(char[][]board,int i,int j,String word,int idx){
-        if(idx >= l)
-        return true;
-        if(i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word.charAt(idx))
-        return false;
-        char temp = board[i][j];
-        board[i][j] = '$';
-        for(int[] dir : directions) {
-        int x = i + dir[0];
-        int y = j + dir[1];
-
-        if(find(board, x, y, word, idx+1))
+    private boolean backtrack(char[][] board, String word, int i, int j, int k, boolean[][] visited) {
+        if (k == word.length()) {
             return true;
-    }
-
-    board[i][j] = temp;
-    return false;
+        }
+        
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j] || board[i][j] != word.charAt(k)) {
+            return false;
+        }
+        
+        visited[i][j] = true;
+        
+        boolean found = backtrack(board, word, i + 1, j, k + 1, visited) ||
+                        backtrack(board, word, i - 1, j, k + 1, visited) ||
+                        backtrack(board, word, i, j + 1, k + 1, visited) ||
+                        backtrack(board, word, i, j - 1, k + 1, visited);
+        
+        visited[i][j] = false;
+        
+        return found;
     }
 }
