@@ -1,16 +1,36 @@
 class Solution {
     public int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {
-        long x=maxDiff(horizontalCuts,h);
-        long y=maxDiff(verticalCuts,w);
-        return (int)((x*y)%1000000007);
-    }
-    private int maxDiff(int arr[],int length){
-        Arrays.sort(arr);
-        int max=arr[0];
-        for(int i=1;i<arr.length;i++){
-            max=Math.max(max,arr[i]-arr[i-1]);
+        ArrayList<Integer> horizontal = new ArrayList<>();
+        ArrayList<Integer> vertical = new ArrayList<>();
+        for(int el: horizontalCuts){
+            horizontal.add(el);
         }
-        max=Math.max(max,length-arr[arr.length-1]);
-        return max;
+        for(int el: verticalCuts){
+            vertical.add(el);
+        }
+        Collections.sort(horizontal);
+        Collections.sort(vertical);
+        if(horizontal.size() == 0) {
+            horizontal.add(0);
+        }
+        if(vertical.size() == 0) {
+            vertical.add(0);
+        }
+
+        horizontal.add(h);
+        vertical.add(w);
+
+        long maxHorizontal = horizontal.get(0);
+        long maxVertical = vertical.get(0);
+        for(int i=1; i<horizontal.size(); i++){
+            int diff = horizontal.get(i) - horizontal.get(i-1);
+            maxHorizontal = Math.max(maxHorizontal, diff);
+        }
+        for(int i=1; i<vertical.size(); i++){
+            int diff = vertical.get(i) - vertical.get(i-1);
+            maxVertical = Math.max(maxVertical, diff);
+        }
+
+        return (int)((maxHorizontal * maxVertical) % (1_000_000_007));
     }
 }
