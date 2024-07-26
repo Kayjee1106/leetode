@@ -13,7 +13,7 @@ class Solution {
         if (i==x){
             x=coverage;
             jumps++;
-        if(x>=destination){
+        if(coverage>=destination){
             return jumps;
         }
         }
