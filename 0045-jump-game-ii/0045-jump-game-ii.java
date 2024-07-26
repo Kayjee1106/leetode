@@ -5,16 +5,15 @@ class Solution {
     int x = 0;
     int destination = nums.length - 1;
 
-    if (nums.length == 1) {
+    if (nums.length == 1){
         return 0;
     }
-
-    for (int i=0; i<nums.length; i++) {
+    for (int i=0; i<nums.length; i++){
         coverage=Math.max(coverage, i+nums[i]);
         if (i==x){
             x=coverage;
             jumps++;
-        if(coverage>=destination){
+        if(x>=destination){
             return jumps;
         }
         }
