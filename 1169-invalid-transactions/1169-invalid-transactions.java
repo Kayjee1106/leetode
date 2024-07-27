@@ -10,8 +10,8 @@ class Solution {
         time=Integer.parseInt(split[1]);
         amount=Integer.parseInt(split[2]);
         city=split[3];
+        }
     }
-}
         public List<String> invalidTransactions(String[] transactions) {
         int n=transactions.length;
         List<String> ans=new ArrayList<>();
