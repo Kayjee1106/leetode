@@ -6,8 +6,8 @@ class Solution {
             if (nums[i] == 1) {
                 contains1 = true;
             }
-            if (nums[i] <= 0 || nums[i] > n) {
-                nums[i] = 1;
+            if (nums[i]<=0||nums[i]>n) {
+                nums[i]=1;
             }
         }
         if (!contains1) return 1;
