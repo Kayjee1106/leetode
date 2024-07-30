@@ -22,37 +22,63 @@ class Solution {
         //         result.append(s.charAt(i));
         // }
         // return result.toString();
-        int n=s.length();
-        int open=0;
-        int close=0;
-        String res1="";
-        StringBuilder res2=new StringBuilder();
-        for(int i=0;i<n;i++){
-            if(s.charAt(i)>='a' && s.charAt(i)<='z'){
-                res1+=s.charAt(i);
-            }
-            else if(s.charAt(i)=='('){
+        
+        
+        
+        // int n=s.length();
+        // int open=0;
+        // int close=0;
+        // String res1="";
+        // StringBuilder res2=new StringBuilder();
+        // for(int i=0;i<n;i++){
+        //     if(s.charAt(i)>='a' && s.charAt(i)<='z'){
+        //         res1+=s.charAt(i);
+        //     }
+        //     else if(s.charAt(i)=='('){
+        //         open++;
+        //         res1+=s.charAt(i);
+        //     }
+        //     else if(open>0){
+        //         open--;
+        //         res1+=s.charAt(i);
+        //     }
+        // }
+        // for(int i=res1.length()-1;i>=0;i--){
+        //     if(res1.charAt(i)>='a' && res1.charAt(i)<='z'){
+        //         res2.append(res1.charAt(i));
+        //     }
+        //      else if(res1.charAt(i)==')'){
+        //         close++;
+        //         res2.append(res1.charAt(i));
+        //     }
+        //     else if(close>0){
+        //         close--;
+        //         res2.append(res1.charAt(i));
+        //     }
+        // }
+        // return res2.reverse().toString();
+         int open = 0;
+        StringBuilder temp = new StringBuilder();
+        
+        for(char c: s.toCharArray()) {
+            if(c == '(') 
                 open++;
-                res1+=s.charAt(i);
-            }
-            else if(open>0){
+            else if(c == ')') {
+                if(open == 0)
+                    continue;
                 open--;
-                res1+=s.charAt(i);
             }
+            
+            temp.append(c);
         }
-        for(int i=res1.length()-1;i>=0;i--){
-            if(res1.charAt(i)>='a' && res1.charAt(i)<='z'){
-                res2.append(res1.charAt(i));
-            }
-             else if(res1.charAt(i)==')'){
-                close++;
-                res2.append(res1.charAt(i));
-            }
-            else if(close>0){
-                close--;
-                res2.append(res1.charAt(i));
-            }
+        
+        StringBuilder result = new StringBuilder();
+        for(int i = temp.length() - 1; i >= 0; i--) {
+            if(temp.charAt(i) == '(' && open-- > 0)
+                continue;
+            result.insert(0, temp.charAt(i));
         }
-        return res2.reverse().toString();
+        
+        return result.toString();
     }
 }
