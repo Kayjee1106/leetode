@@ -61,9 +61,7 @@ class Solution {
                 center = i;
                 radius = i + radii[i];
             }
-
         }
-
         int maxl = 0;
         int centeri = 0;
         for(int i = 0; i < n; i++) {
@@ -73,7 +71,6 @@ class Solution {
             }
         }
         int start = (centeri - maxl) / 2;
-        String ans = s.substring(start, start + maxl);
-        return ans;
+        return s.substring(start, start + maxl);
     }
 }
