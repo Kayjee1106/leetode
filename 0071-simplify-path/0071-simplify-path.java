@@ -36,12 +36,10 @@ class Solution {
                 deque.offerLast(part);
             }
         }
-
         StringBuilder result = new StringBuilder();
         for (String dir : deque) {
             result.append("/").append(dir);
         }
-
         return result.length() > 0 ? result.toString() : "/";
     }
 }
