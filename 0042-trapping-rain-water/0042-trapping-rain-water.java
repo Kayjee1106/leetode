@@ -13,7 +13,7 @@ class Solution {
         }
         int ans=0;
         for(int i=0;i<n;i++){
-            ans+=(Math.min(left[i],right[i])-height[i]);
+            ans+=(Math.min(left[i],right[i]))-height[i];
         }
         return ans;
     }
