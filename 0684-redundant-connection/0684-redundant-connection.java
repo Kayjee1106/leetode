@@ -10,13 +10,13 @@ class Solution {
         }
         return null;
     }
-    public int find(int node){
+    int find(int node){
         while(parent[node]!=node){
             node=parent[node];
         }
         return node;
     }
-    public void union(int i,int j){
+    void union(int i,int j){
         int iRoot=find(i);
         int jRoot=find(j);
         if(iRoot!=jRoot){
