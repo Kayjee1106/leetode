@@ -52,7 +52,7 @@ class Solution {
         for(int i=1;i<=h;i++){
             double sum=solve(root, i);
             int count=countNodesAtLevel(root,i);
-            ans.add(sum/(double)count);
+            ans.add(sum/count);
         }
         return ans;
     }
