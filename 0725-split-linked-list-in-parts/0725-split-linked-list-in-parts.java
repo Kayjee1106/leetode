@@ -29,9 +29,7 @@ class Solution {
             ans[i]=curr;
             for(int count=1;count<=eachBucketNodes+(remainderNodes>0?1:0);count++){
                 prev=curr;
-                if (curr != null) {
-                    curr = curr.next;
-                }
+                curr=curr.next;
             }
             if (prev != null) {
                 prev.next = null;
