@@ -1,25 +1,20 @@
 class Solution {
     public String[] uncommonFromSentences(String s1, String s2) {
-        // Concatenate the two sentences with a space
-        String[] words = (s1 + " " + s2).split(" ");
-        
-        // Create a map to store the frequency of each word
-        Map<String, Integer> frequencyMap = new HashMap<>();
-        
-        // Count the frequency of each word
-        for (String word : words) {
-            frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
+        String[] words1 = s1.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for(String word: words1){
+            map.put(word,map.getOrDefault(word,0)+1);
         }
-        
-        // Create a list for uncommon words (frequency = 1)
-        List<String> uncommonWords = new ArrayList<>();
-        for (String word : frequencyMap.keySet()) {
-            if (frequencyMap.get(word) == 1) {
-                uncommonWords.add(word);
+        String[] words2 = s2.split(" ");
+        for(String word: words2){
+            map.put(word,map.getOrDefault(word,0)+1);
+        }
+        ArrayList<String> ans = new ArrayList<>();
+        for(Map.Entry<String,Integer> mp: map.entrySet()){
+            if(mp.getValue()==1){
+                ans.add(mp.getKey());
             }
         }
-        
-        // Return the list as a String array
-        return uncommonWords.toArray(new String[0]);
+        return ans.toArray(new String[0]);
     }
 }
