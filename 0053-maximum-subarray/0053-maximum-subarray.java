@@ -4,9 +4,7 @@ class Solution {
         int max=nums[0];
         int curr=0;
         for(int el:nums){
-            if(curr<0){
-                curr=0;
-            }
+            if(curr<0)curr=0;
             curr+=el;
             max=Math.max(max,curr);
         }
