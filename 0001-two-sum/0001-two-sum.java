@@ -7,7 +7,7 @@ class Solution {
             if(map.containsKey(remaining)){
                 arr[0]=map.get(remaining);
                 arr[1]=i;
-                break;
+                // break;
             }
             map.put(nums[i],i);
         }
