@@ -4,7 +4,6 @@ class Solution {
         if (arr.length == 0) {
             return 0;
         }
-        String lastWord = arr[arr.length - 1];
-        return lastWord.length();
+        return arr[arr.length - 1].length();
     }
 }
